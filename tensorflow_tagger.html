@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TensorFlow.js Object Detection</title>
+</head>
+<body>
+    <h2>TensorFlow.js Object Detection</h2>
+
+    <input type="file" id="upload">
+    <br><br>
+
+    <img id="image" width="500px">
+    <p id="predictions"></p>
+
+    <!-- Import TensorFlow.js and COCO-SSD Model -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+
+    <script>
+        const imageElement = document.getElementById('image');
+        const predictionsElement = document.getElementById('predictions');
+        const uploadElement = document.getElementById('upload');
+
+        let model;
+
+        async function loadModel() {
+            model = await cocoSsd.load();
+        }
+
+        async function predict() {
+            const predictions = await model.detect(imageElement);
+            let textContent = 'Predictions:<br>';
+            predictions.forEach(prediction => {
+                textContent += `${prediction.class}: ${Math.round(prediction.score * 100)}%<br>`;
+            });
+            predictionsElement.innerHTML = textContent;
+        }
+
+        uploadElement.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imageElement.src = e.target.result;
+                    imageElement.onload = predict;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Load the model when the page loads
+        loadModel();
+
+    </script>
+</body>
+</html>
