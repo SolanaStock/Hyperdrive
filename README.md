@@ -54,6 +54,6 @@ Join the next-gen photo marketplace and turn your photos into profit with Solana
 
 ![Screenshot](https://i.ibb.co/JK56hfB/Screenshot-2023-10-16-at-09-23-16.png)
 
-![Screenshot](https://i.ibb.co/wKmycXj/Screenshot-2023-10-16-at-09-23-23.png)
-
 ![Screenshot](https://i.ibb.co/vxzzwT8/Screenshot-2023-10-16-at-09-39-08.png)
+
+![Screenshot](https://i.ibb.co/wKmycXj/Screenshot-2023-10-16-at-09-23-23.png)
